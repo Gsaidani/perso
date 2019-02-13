@@ -1,6 +1,6 @@
 package org.labaraka.dev.entities;
 
-public enum TypesAutresCharges {
+public enum TypesAutresChargesEnum {
 	Employes,
 	Loyer,
 	EDF,

@@ -1,6 +1,6 @@
 package org.labaraka.dev.entities;
 
-public enum TypeRecette {
+public enum TypeRecetteEnum {
 	TR,
 	Espece,
 	TPE

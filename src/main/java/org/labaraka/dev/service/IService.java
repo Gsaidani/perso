@@ -1,40 +1,51 @@
 package org.labaraka.dev.service;
 
-import java.util.Date;
+
+import java.sql.Date;
 import java.util.List;
 
 import org.labaraka.dev.entities.AutresCharges;
 import org.labaraka.dev.entities.ChargeJournee;
-import org.labaraka.dev.entities.ChargeSemaine;
-import org.labaraka.dev.entities.Produit;
 import org.labaraka.dev.entities.RecetteJournee;
-import org.labaraka.dev.entities.RecetteSemaine;
 import org.labaraka.dev.entities.TypeProduitsVente;
 import org.labaraka.dev.entities.VenteJournee;
-import org.labaraka.dev.entities.VenteSemaine;
+
 
 public interface IService {
-	public void addRecetteJournee(String type, double total, Date date);
-	public void addRecetteSemaine(List<RecetteJournee> listeDesTotaux,double totalSemaine,Date dateSemaine);
-	public void addVenteJournee(List<TypeProduitsVente> produits,double totalJournee,Date dateJournee);
-	public void addVenteSemaine(List<VenteJournee> listeDesTotaux,double totalSemaine,Date dateSemaine);
-	public void addChargeJournee(List<Produit> produits,double totalJournee,Date dateJournee);
-	public void addChargeSemaine(List<VenteJournee> listeDesTotaux,double totalSemaine,Date dateSemaine);
-	public void addAutrescharges(String chargeType,double charge, double totalSemaine,Date dateSemaine,double totalMois);
+
+public void addRecetteJournee(String type, double valeur, Date date);
 	
-	public void modifyRecetteJournee(Long id,String type,double totalTypeRecette, Date date);
-	public void modifyRecetteSemaine(long id, List<RecetteJournee> listeDesTotaux,double totalSemaine,Date dateSemaine);
-	public void modifyVenteJournee(List<TypeProduitsVente> produits,double totalJournee,Date dateJournee);
-	public void modifyVenteSemaine(List<VenteJournee> listeDesTotaux,double totalSemaine,Date dateSemaine);
-	public void modifyChargeJournee(List<Produit> produits,double totalJournee,Date dateJournee);
-	public void modifyChargeSemaine(List<VenteJournee> listeDesTotaux,double totalSemaine,Date dateSemaine);
-	public void modifyAutrescharges(String chargeType,double charge, double totalSemaine,Date dateSemaine,double totalMois);
+	public void addVenteJournee(VenteJournee venteJournee, Date dateJournee);
+	
+	public void addChargeJournee(ChargeJournee cj,Date dateJournee);
+	
+	public void addAutrescharges(List<AutresCharges> list,Date date, long numSemaine);
+	
+	public void modifyRecetteJournee(Long id,String type,double valeur, Date date);
+	
+	public void modifyVenteJournee(Long id,String type,double quantite,double valeur, Date date);
+	
+	public void modifyChargeJournee(Long id,String type,double quantite,double valeur, Date date);
+	
+	public void modifyAutrescharges(Long id,String type,double charge,long numSemaine,Date date);
 	
 	public List<RecetteJournee> consultRecetteJournee(Date di, Date df);
-	public RecetteSemaine consultRecetteSemaine(Date di, Date df);
+	
 	public List<ChargeJournee> consultChargeJournee(Date di, Date df);
-	public ChargeSemaine consultchargeSemaine(Date di, Date df);
+	
 	public List<VenteJournee> consultVenteJournee(Date di, Date df);
-	public VenteSemaine consultVenteSemaine(Date di, Date df);
+	
+	public List<AutresCharges> consultAutresCharges(Date di, Date df);
+	
+	public long findSemaineByDate(Date date);
+	
+	public void deleteRecetteJournee(Long id,Date date);
+	
+	public void deleteVenteJournee(Long id,Date date);
+	
+	public void deleteChargeJournee(Long id,Date date);
+	
+	public void deleteAutrescharges(Long id,Date date);
+	
 
 }

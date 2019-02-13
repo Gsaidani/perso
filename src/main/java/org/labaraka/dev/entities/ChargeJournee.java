@@ -1,60 +1,77 @@
 package org.labaraka.dev.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 @Entity
 @Table(name="chargeJournee")
 public class ChargeJournee implements Serializable {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID")
 	private long id;
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<Produit> produits;
-	private double totalJournee;
-	private Date dateJournee;
+	private String type;
+	private double quantite;
+	private double valeur;
+	private Date date;
+	 @OneToOne(fetch = FetchType.LAZY, optional = false)
+	    @JoinColumn(name = "semaine_id", nullable = false)
+	private Semaine semaine;
 	public long getId() {
 		return id;
 	}
 	public void setId(long id) {
 		this.id = id;
 	}
-	public List<Produit> getProduits() {
-		return produits;
+
+	public double getQuantite() {
+		return quantite;
 	}
-	public void setProduits(List<Produit> produits) {
-		this.produits = produits;
+	public void setQuantite(double quantite) {
+		this.quantite = quantite;
 	}
-	public double getTotalJournee() {
-		return totalJournee;
+	
+	public String getType() {
+		return type;
 	}
-	public void setTotalJournee(double totalJournee) {
-		this.totalJournee = totalJournee;
+	public void setType(String type) {
+		this.type = type;
 	}
-	public Date getDateJournee() {
-		return dateJournee;
+	public double getValeur() {
+		return valeur;
 	}
-	public void setDateJournee(Date dateJournee) {
-		this.dateJournee = dateJournee;
+	public void setValeur(double valeur) {
+		this.valeur = valeur;
+	}
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	public Semaine getSemaine() {
+		return semaine;
+	}
+	public void setSemaine(Semaine semaine) {
+		this.semaine = semaine;
 	}
 	public ChargeJournee() {
 		super();
 	}
-	public ChargeJournee(long id, double totalJournee, Date dateJournee) {
-		super();
-		this.id = id;
-		this.totalJournee = totalJournee;
-		this.dateJournee = dateJournee;
-	}
+	
 
 }

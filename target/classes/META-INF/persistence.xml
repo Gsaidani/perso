@@ -11,7 +11,11 @@
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />
+			<property name="logging.level.org.hibernate.SQL" value="DEBUG" />
+			<property name="logging.level.org.hibernate.type" value="TRACE" />
+						
 		</properties>
 
 	</persistence-unit>
+	
 </persistence>

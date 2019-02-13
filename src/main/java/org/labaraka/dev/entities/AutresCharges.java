@@ -4,11 +4,15 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 @Entity
 @Table(name="autresCharges")
@@ -17,61 +21,43 @@ public class AutresCharges implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID")
 	private long id;
-	private String chargeType;
+	private String type;
 	private double charge;
-	private double totalSemaine;
-	private Date dateSemaine;
-	private double totalMois;
+	private Date dateJour;
+	 @OneToOne(fetch = FetchType.LAZY, optional = false)
+	    @JoinColumn(name = "semaine_id", nullable = false)
+	private Semaine semaine;
 	public long getId() {
 		return id;
 	}
 	public void setId(long id) {
 		this.id = id;
 	}
-	public String getChargeType() {
-		return chargeType;
-	}
-	public void setChargeType(String chargeType) {
-		this.chargeType = chargeType;
-	}
+	
 	public double getCharge() {
 		return charge;
 	}
 	public void setCharge(double charge) {
 		this.charge = charge;
-	}
-	public double getTotalSemaine() {
-		return totalSemaine;
-	}
-	public void setTotalSemaine(double totalSemaine) {
-		this.totalSemaine = totalSemaine;
-	}
+	}	
 	
-	public Date getDateSemaine() {
-		return dateSemaine;
+	public Date getDateJour() {
+		return dateJour;
 	}
-	public void setDateSemaine(Date dateSemaine) {
-		this.dateSemaine = dateSemaine;
+	public void setDateJour(Date dateJour) {
+		this.dateJour = dateJour;
 	}
-	public double getTotalMois() {
-		return totalMois;
+	public Semaine getSemaine() {
+		return semaine;
 	}
-	public void setTotalMois(double totalMois) {
-		this.totalMois = totalMois;
+	public void setSemaine(Semaine semaine) {
+		this.semaine = semaine;
 	}
+
 	public AutresCharges() {
 		super();
 	}
-	public AutresCharges(long id, String chargeType, double charge, double totalSemaine, Date dateSemaine,
-			double totalMois) {
-		super();
-		this.id = id;
-		this.chargeType = chargeType;
-		this.charge = charge;
-		this.totalSemaine = totalSemaine;
-		this.dateSemaine = dateSemaine;
-		this.totalMois = totalMois;
-	}
+	
 	
 
 }

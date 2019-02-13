@@ -1,6 +1,6 @@
 package org.labaraka.dev.entities;
 
-public enum TypeProduit {
+public enum TypeProduitAcheteEnum {
 	viande,
 	poulet,
 	pain,
