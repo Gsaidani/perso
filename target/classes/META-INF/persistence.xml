@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0"
+	xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+	<persistence-unit name="labaraka"
+		transaction-type="RESOURCE_LOCAL">
+		<!-- Liste de toutes les classes ici -->
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		
+
+		<properties>
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="logging.level.org.hibernate.SQL" value="DEBUG" />
+			<property name="logging.level.org.hibernate.type" value="TRACE" />
+						
+		</properties>
+
+	</persistence-unit>
+	
+</persistence>
